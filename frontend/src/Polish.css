@@ -1,8 +1,8 @@
 /* Visual refinement only: retain the original palette, page order and grid geometry. */
 body { font-family: "Segoe UI", system-ui, -apple-system, sans-serif; }
 button, input, select, textarea { font-family: inherit; }
-.brand-mark { overflow: hidden; }
-.brand-mark img { width: 25px; height: 25px; object-fit: contain; filter: brightness(0) invert(1); }
+.brand-mark { overflow: visible; background: transparent; box-shadow: none; }
+.brand-mark img { display: block; width: 100%; height: auto; max-height: 100%; object-fit: contain; }
 .brand h1 { font-size: 14px; font-weight: 700; letter-spacing: .45px; }
 .brand p { font-size: 9px; }
 .admin-label { font-size: 9px; font-weight: 600; letter-spacing: .9px; }
@@ -44,7 +44,7 @@ button, input, select, textarea { font-family: inherit; }
 .json-details summary { font-size: 13px; font-weight: 600; }
 .json-details[open] summary { margin-bottom: 12px; }
 .login-brand { display: flex; align-items: center; gap: 11px; color: #17243b; font-size: 18px; font-weight: 700; letter-spacing: 1px; }
-.login-brand .brand-mark { width: 34px; height: 34px; flex-basis: 34px; background: #1d4f9b; }
+.login-brand .brand-mark { width: 34px; height: 34px; flex-basis: 34px; background: transparent; }
 .login-card h1 { font-weight: 650; letter-spacing: -.7px; }
 .login-card > p { color: #64748b; font-size: 13px; line-height: 1.65; }
 .login-card .notice { font-size: 12px; }
