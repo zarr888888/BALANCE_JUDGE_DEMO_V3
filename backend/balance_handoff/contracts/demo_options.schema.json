@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BALANCE local replay demo options; not balance-ai/1.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "prediction_mode",
+    "supply_fraction",
+    "tail_capacity_ml",
+    "loss_mode"
+  ],
+  "properties": {
+    "prediction_mode": {
+      "enum": [
+        "ml",
+        "baseline"
+      ]
+    },
+    "supply_fraction": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "tail_capacity_ml": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 5000
+    },
+    "loss_mode": {
+      "enum": [
+        "learned",
+        "assumed"
+      ]
+    },
+    "loss_flow_ml_s": {
+      "type": "number",
+      "minimum": 2,
+      "maximum": 12,
+      "default": 6
+    },
+    "loss_head_cm": {
+      "type": "number",
+      "minimum": 10,
+      "maximum": 30,
+      "default": 20
+    }
+  }
+}

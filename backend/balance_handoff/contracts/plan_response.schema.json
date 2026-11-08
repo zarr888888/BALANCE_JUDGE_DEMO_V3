@@ -1,0 +1,103 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "balance-handoff/1.0"
+    },
+    "plan_id": {
+      "type": "string"
+    },
+    "request_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.:-]{1,100}$"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "context": {
+      "const": "SIMULASI"
+    },
+    "status": {
+      "const": "RECOMMENDATION_FOR_REVIEW"
+    },
+    "execution_allowed": {
+      "const": false
+    },
+    "field_validated": {
+      "const": false
+    },
+    "real_measurement_rows_in_training": {
+      "const": 0
+    },
+    "ml_status": {
+      "const": "TRAINED_SYNTHETIC_ONLY"
+    },
+    "actual_measured": {
+      "type": "null"
+    },
+    "feature_source": {
+      "enum": [
+        "CALLER_SYNTHETIC_SCENARIO",
+        "FIRST_SAVED_SYNTHETIC_TEST_CYCLE"
+      ]
+    },
+    "predictions": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4
+    },
+    "source_budget": {
+      "type": "object"
+    },
+    "eta": {
+      "type": "object"
+    },
+    "allocation": {
+      "type": "object"
+    },
+    "schedule": {
+      "type": "object"
+    },
+    "comparison_baseline": {
+      "type": "object"
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "scenario": {
+      "type": "object"
+    },
+    "conversion": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "plan_id",
+    "request_id",
+    "created_at",
+    "context",
+    "status",
+    "execution_allowed",
+    "field_validated",
+    "real_measurement_rows_in_training",
+    "ml_status",
+    "actual_measured",
+    "feature_source",
+    "predictions",
+    "source_budget",
+    "eta",
+    "allocation",
+    "schedule",
+    "comparison_baseline",
+    "warnings",
+    "scenario",
+    "conversion"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

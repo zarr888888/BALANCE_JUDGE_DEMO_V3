@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Synthetic history experiment options; no measurement ingestion",
+  "type": "object", "additionalProperties": false,
+  "properties": {
+    "history_window_cycles": {"type":"integer","minimum":1,"maximum":10},
+    "disparity_budget_ratio": {"type":"number","minimum":0,"maximum":0.1}
+  }
+}

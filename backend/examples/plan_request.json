@@ -1,0 +1,11 @@
+{
+  "request_id": "demo-001",
+  "context": "SIMULASI",
+  "prediction_mode": "ml",
+  "supply_fraction": 1,
+  "tail_capacity_ml": 5000,
+  "loss_mode": "learned",
+  "loss_flow_ml_s": 6,
+  "loss_head_cm": 20,
+  "horizon_s": 600
+}

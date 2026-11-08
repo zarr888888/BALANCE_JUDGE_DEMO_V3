@@ -1,0 +1,42 @@
+{
+  "registry_version": "balance-synthetic-parameters/0.1",
+  "review_status": "EXPERIMENTAL_ASSUMPTIONS_NOT_LOCALLY_VALIDATED",
+  "context": "SIMULASI",
+  "purpose": "Demonstrate reproducible ML training; not certify irrigation recommendations",
+  "horizon_hours": 24,
+  "field_volume_unit": "L",
+  "established_paddy_only": true,
+  "saturation_mm": 0,
+  "new_water_layer_mm": 0,
+  "demand_formula": "area_m2 * max(0, kc * et0_future_mm + percolation_mm - effective_rain_future_mm)",
+  "sources": {
+    "fao_rice_structure": "https://www.fao.org/4/S2022E/s2022e08.htm#4.4%20irrigation%20water%20need%20of%20rice",
+    "fao_crop_coefficient": "https://www.fao.org/4/x0490e/x0490e0a.htm",
+    "gradient_boosting": "https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingRegressor.html",
+    "leakage_practice": "https://scikit-learn.org/stable/common_pitfalls.html"
+  },
+  "parameters": {
+    "area_m2": {"range": [1000, 20000], "source": "INTERNAL_SIMULATION_ASSUMPTION"},
+    "percolation_mm_per_24h": {"range": [4, 8], "source": "FAO_RICE_MANUAL_EXAMPLES_NOT_LOCAL_CALIBRATION"},
+    "kc": {"formula": "1.1 + 0.1*sin(day/36*2*pi + family_zone_phase)", "range": [1.0, 1.2], "source": "INTERNAL_SIMULATION_ASSUMPTION_NOT_A_VALIDATED_CROP_CALENDAR"},
+    "et0_forecast_mm": {"uniform_range": [2.5, 7], "source": "INTERNAL_SIMULATION_ASSUMPTION_NOT_BMKG_OR_PENMAN_MONTEITH"},
+    "rain_forecast_mm": {"zero_probability": 0.45, "nonzero_uniform_range": [0, 35], "source": "INTERNAL_SIMULATION_ASSUMPTION"},
+    "future_et0_mm": {"formula": "max(0, forecast + Normal(0, 0.45))", "source": "INTERNAL_FORECAST_ERROR_ASSUMPTION"},
+    "future_rain_mm": {"formula": "max(0, forecast + Normal(0, 4))", "source": "INTERNAL_FORECAST_ERROR_ASSUMPTION"},
+    "effective_rain_fraction": {"value": 0.7, "source": "INTERNAL_TOY_ASSUMPTION_NOT_A_FAO_DAILY_RAIN_METHOD"},
+    "base_inflow_L": {"uniform_range": [20000, 100000], "source": "INTERNAL_SIMULATION_ASSUMPTION"},
+    "planned_upstream_inflow_L": {"uniform_range": [0, 15000], "source": "INTERNAL_SIMULATION_ASSUMPTION_NOT_AN_ACTUAL_WATER_RIGHT"},
+    "inflow_L": {"formula": "max(0, 0.7*previous + 0.3*base + 250*future_rain_mm + planned + Normal(0, 0.08*base))", "source": "INTERNAL_TOY_SOURCE_PROCESS_NOT_HYDROLOGICAL_MODEL"},
+    "initial_previous_inflow_L": {"formula": "base_inflow_L", "source": "INTERNAL_SIMULATED_INITIAL_CONDITION_NOT_MEASUREMENT"},
+    "calendar_origin": {"value": "2020-01-01T00:00:00+07:00", "source": "ARBITRARY_SYNTHETIC_INDEX_NOT_HISTORICAL_OBSERVATION"},
+    "inter_family_gap_days": {"value": 3, "source": "INTERNAL_SPLIT_EMBARGO_ASSUMPTION"},
+    "mape_inclusion_threshold_L": {"value": 100, "source": "PREDECLARED_LAB_EVALUATION_RULE_NOT_SENSOR_RESOLUTION_OR_OFFICIAL_RUBRIC"}
+  },
+  "review_before_real_use": [
+    "Local crop, stage, soil, water storage and agronomic validity",
+    "Real issued-at forecasts, horizon alignment, permitted sources and forecast errors",
+    "Measured shared-source inflow and usable storage without double counting",
+    "Appropriate labels, uncertainty, chronological/group holdout and operating policy",
+    "Explicit unit and scale conversion before any optimizer integration"
+  ]
+}

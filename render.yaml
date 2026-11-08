@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: balance-judge-demo
+    runtime: docker
+    plan: 0.5c-512mb
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/balance/v1/health
+    disk:
+      name: balance-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: DASHBOARD_KEY
+        generateValue: true
+      - key: DEVICE_KEY
+        generateValue: true
+      - key: JUDGE_USERNAME
+        value: juri
+      - key: JUDGE_PASSWORD
+        sync: false
+      - key: ENABLE_ACTUATION
+        value: "false"
+      - key: BALANCE_COOKIE_SECURE
+        value: "true"
+      - key: BALANCE_STATE_DIR
+        value: /var/data/balance
+      - key: OMP_NUM_THREADS
+        value: "1"
+      - key: OPENBLAS_NUM_THREADS
+        value: "1"

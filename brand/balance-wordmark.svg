@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 106">
+<title>BALANCE — Perencanaan irigasi</title>
+<g transform="translate(0 3)">  <path fill="#2864F0" d="M14 12h35c16 0 26 9 26 22 0 7-3 13-9 17 8 4 12 10 12 18 0 14-11 23-28 23H14V78h35c9 0 14-4 14-10s-5-10-14-10H14V44h33c9 0 14-3 14-9s-5-9-14-9H14V12Z"/>
+  <path fill="#2864F0" d="M14 12h12v80H14z"/>
+  <path fill="#2864F0" d="M6 44h20v14H6z"/>
+</g>
+<text x="108" y="62" fill="#101A2E" font-family="Arial, sans-serif" font-size="45" font-weight="700" letter-spacing="3">BALANCE</text>
+<text x="110" y="85" fill="#64748B" font-family="Arial, sans-serif" font-size="12" letter-spacing="1.2">PERENCANAAN IRIGASI</text>
+</svg>

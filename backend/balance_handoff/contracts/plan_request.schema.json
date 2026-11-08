@@ -1,0 +1,178 @@
+{
+  "type": "object",
+  "properties": {
+    "prediction_mode": {
+      "enum": [
+        "ml",
+        "baseline"
+      ]
+    },
+    "supply_fraction": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "tail_capacity_ml": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 5000
+    },
+    "loss_mode": {
+      "enum": [
+        "learned",
+        "assumed"
+      ]
+    },
+    "loss_flow_ml_s": {
+      "type": "number",
+      "minimum": 2,
+      "maximum": 12,
+      "default": 6
+    },
+    "loss_head_cm": {
+      "type": "number",
+      "minimum": 10,
+      "maximum": 30,
+      "default": 20
+    },
+    "request_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.:-]{1,100}$"
+    },
+    "context": {
+      "const": "SIMULASI"
+    },
+    "feature_scenario": {
+      "type": "object",
+      "properties": {
+        "as_of": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "target_end": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "features_available_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "supply": {
+          "type": "object",
+          "properties": {
+            "previous_inflow_L": {
+              "type": "number",
+              "minimum": 0
+            },
+            "base_inflow_assumed_L": {
+              "type": "number",
+              "minimum": 0
+            },
+            "rain_forecast_mm": {
+              "type": "number",
+              "minimum": 0
+            },
+            "planned_upstream_inflow_L": {
+              "type": "number",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "previous_inflow_L",
+            "base_inflow_assumed_L",
+            "rain_forecast_mm",
+            "planned_upstream_inflow_L"
+          ],
+          "additionalProperties": false
+        },
+        "zones": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "properties": {
+              "zone_id": {
+                "enum": [
+                  "A",
+                  "B",
+                  "C"
+                ]
+              },
+              "features": {
+                "type": "object",
+                "properties": {
+                  "area_m2": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "kc_assumed": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "et0_forecast_mm": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "effective_rain_forecast_mm": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "percolation_assumed_mm": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "etc_forecast_L": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "percolation_assumed_L": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "effective_rain_forecast_L": {
+                    "type": "number",
+                    "minimum": 0
+                  }
+                },
+                "required": [
+                  "area_m2",
+                  "kc_assumed",
+                  "et0_forecast_mm",
+                  "effective_rain_forecast_mm",
+                  "percolation_assumed_mm",
+                  "etc_forecast_L",
+                  "percolation_assumed_L",
+                  "effective_rain_forecast_L"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "zone_id",
+              "features"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "as_of",
+        "target_end",
+        "features_available_at",
+        "supply",
+        "zones"
+      ],
+      "additionalProperties": false
+    },
+    "horizon_s": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "maximum": 3600
+    }
+  },
+  "required": [],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BALANCE handoff plan request, synthetic scenario only"
+}

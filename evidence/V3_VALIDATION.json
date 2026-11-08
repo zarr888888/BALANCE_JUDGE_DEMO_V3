@@ -1,0 +1,80 @@
+{
+  "release": "BALANCE_JUDGE_DEMO_V3",
+  "prepared_at_utc": "2026-11-08T05:27:01.220218+00:00",
+  "scope": "Judge web demo: React + Flask + synthetic ML + LP + scheduler/replay. Physical IoT demonstration remains separate.",
+  "backend_tests": {
+    "passed": 104,
+    "warnings": 1,
+    "elapsed_seconds": 3.27,
+    "warning": "pytest plugin deprecation warning",
+    "command": "PYTHONPATH=<existing test_deps> python -m pytest -q --tb=short --maxfail=1"
+  },
+  "frontend_tests": {
+    "passed": 3,
+    "files": 1,
+    "elapsed_seconds": 6.51,
+    "command": "PYTHONPATH=<existing test_deps> npm test",
+    "scope": "Real Flask child process, judge/operator login and role-specific interfaces, scenario planning/replay/telemetry interactions."
+  },
+  "frontend_build": {
+    "status": "PASS",
+    "modules": 395,
+    "warning": "Main JavaScript chunk exceeds 500 kB after minification; non-blocking Vite warning."
+  },
+  "judge_http": {
+    "status": "JUDGE_HTTP_PASS",
+    "timestamp_utc": "2026-11-08T05:16:37.706110+00:00",
+    "elapsed_seconds": 0.252,
+    "peak_rss_mib": 187.69,
+    "profile_scope": "One process: startup, judge HTTP login, plan, replay, simulated telemetry, authorization rejection, logout. Development WSGI server; not Docker/Render load test.",
+    "model_refitted": false,
+    "field_validated": false,
+    "physical_actuation_tested": false,
+    "runtime": {
+      "Flask": "3.1.3",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "scikit-learn": "1.8.0",
+      "joblib": "1.5.3",
+      "waitress": "3.0.2"
+    }
+  },
+  "visual_qa": {
+    "status": "PASS",
+    "pages_observed": [
+      "Judge login",
+      "Dashboard allocation result",
+      "Monitoring simulated telemetry",
+      "Schedule and replay result"
+    ],
+    "sidebar_width_px": 205,
+    "viewport_width_px": 1363,
+    "document_width_px": 1355,
+    "brand_asset_loaded": true,
+    "note": "Browser visual preview used a temporary local judge-session fixture outside the release. Real authentication was verified by HTTP and frontend tests. No such fixture or route is included in this package."
+  },
+  "preservation": {
+    "backend_files_compared": 55,
+    "backend_changes": [],
+    "original_base_styles_identical": {
+      "App.css": true,
+      "Integration.css": true,
+      "index.css": true
+    },
+    "original_V2_folders_overwritten": false
+  },
+  "deployment": {
+    "target": "Render Docker 0.5c-512mb + 1GB persistent disk, Singapore, one instance",
+    "estimated_base_usd_month": 7.25,
+    "pricing_checked_date": "2026-11-08",
+    "full_docker_build_verified": false,
+    "public_url_verified": false,
+    "commit_push_or_deploy_performed": false
+  },
+  "limits": [
+    "Synthetic training data; field_validated=false.",
+    "No sensor calibration, actual delivery measurement, or physical actuation tested for this web release.",
+    "Memory profile is a single-process local measurement, not Docker or concurrent load verification.",
+    "Production judge password and public URL must be configured in the team hosting account."
+  ]
+}

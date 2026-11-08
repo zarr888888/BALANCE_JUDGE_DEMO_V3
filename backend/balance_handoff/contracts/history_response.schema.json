@@ -1,0 +1,861 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "balance-history-lab-report/0.1"
+    },
+    "module_version": {
+      "const": "1.0-simulation"
+    },
+    "status": {
+      "const": "HISTORY_SIMULATION_COMPLETE"
+    },
+    "context": {
+      "const": "SIMULASI"
+    },
+    "ml_status": {
+      "const": "TRAINED_SYNTHETIC_ONLY"
+    },
+    "history_component_kind": {
+      "const": "CALCULATION_NOT_ML"
+    },
+    "real_measurement_rows": {
+      "const": 0
+    },
+    "execution_allowed": {
+      "const": false
+    },
+    "device_connected": {
+      "const": false
+    },
+    "actual_measured": {
+      "type": "null"
+    },
+    "field_validated": {
+      "const": false
+    },
+    "proposal_targets_proven": {
+      "const": false
+    },
+    "upstream": {
+      "type": "object"
+    },
+    "experiment": {
+      "type": "object",
+      "properties": {
+        "history_window_cycles": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "disparity_budget_ratio": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.1
+        },
+        "policy_status": {
+          "const": "EXPERIMENTAL_FOR_REVIEW"
+        },
+        "default_demo13_policy_changed": {
+          "const": false
+        },
+        "same_synthetic_features_and_need_repeated_across_cycles": {
+          "const": true
+        },
+        "cycle_dates_relabelled_for_synthetic_order_only": {
+          "const": true
+        },
+        "source_budget_replenished_by_assumption_each_cycle": {
+          "const": true
+        },
+        "third_cycle_later_receipts_match_frozen_eta_by_construction": {
+          "const": true
+        }
+      },
+      "required": [
+        "history_window_cycles",
+        "disparity_budget_ratio",
+        "policy_status",
+        "default_demo13_policy_changed",
+        "same_synthetic_features_and_need_repeated_across_cycles",
+        "cycle_dates_relabelled_for_synthetic_order_only",
+        "source_budget_replenished_by_assumption_each_cycle",
+        "third_cycle_later_receipts_match_frozen_eta_by_construction"
+      ],
+      "additionalProperties": false
+    },
+    "initial_unknown_history": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "balance-history-snapshot/0.1"
+        },
+        "context": {
+          "const": "SIMULASI"
+        },
+        "as_of": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "window_cycles": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "cycle_ids_used": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "record_sha256_used": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "rows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "zone_id": {
+                "type": "string"
+              },
+              "history_state": {
+                "enum": [
+                  "KNOWN",
+                  "UNKNOWN",
+                  "NO_POSITIVE_NEED"
+                ]
+              },
+              "completed_cycles_used": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "history_need_ml": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "history_deficit_ml": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "history_score": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "kind": {
+                "const": "CALCULATED"
+              },
+              "context": {
+                "const": "SIMULASI"
+              }
+            },
+            "required": [
+              "zone_id",
+              "history_state",
+              "completed_cycles_used",
+              "history_need_ml",
+              "history_deficit_ml",
+              "history_score",
+              "kind",
+              "context"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "actual_measured": {
+          "type": "null"
+        },
+        "snapshot_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "schema_version",
+        "context",
+        "as_of",
+        "window_cycles",
+        "cycle_ids_used",
+        "record_sha256_used",
+        "rows",
+        "actual_measured",
+        "snapshot_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "seed_cycles": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "history_before_cycle3": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "balance-history-snapshot/0.1"
+        },
+        "context": {
+          "const": "SIMULASI"
+        },
+        "as_of": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "window_cycles": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "cycle_ids_used": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "record_sha256_used": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "rows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "zone_id": {
+                "type": "string"
+              },
+              "history_state": {
+                "enum": [
+                  "KNOWN",
+                  "UNKNOWN",
+                  "NO_POSITIVE_NEED"
+                ]
+              },
+              "completed_cycles_used": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "history_need_ml": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "history_deficit_ml": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "history_score": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "kind": {
+                "const": "CALCULATED"
+              },
+              "context": {
+                "const": "SIMULASI"
+              }
+            },
+            "required": [
+              "zone_id",
+              "history_state",
+              "completed_cycles_used",
+              "history_need_ml",
+              "history_deficit_ml",
+              "history_score",
+              "kind",
+              "context"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "actual_measured": {
+          "type": "null"
+        },
+        "snapshot_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "schema_version",
+        "context",
+        "as_of",
+        "window_cycles",
+        "cycle_ids_used",
+        "record_sha256_used",
+        "rows",
+        "actual_measured",
+        "snapshot_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "policy_comparison": {
+      "type": "object",
+      "required": [
+        "context",
+        "history_snapshot_sha256",
+        "source_budget_ml",
+        "frozen_inputs",
+        "strict_current",
+        "history_bounded",
+        "fairness_envelope",
+        "same_inputs_for_both_policies",
+        "old_deficit_added_to_current_need",
+        "execution_allowed",
+        "actual_measured"
+      ],
+      "properties": {
+        "context": {
+          "const": "SIMULASI"
+        },
+        "source_budget_ml": {
+          "type": "number",
+          "minimum": 0
+        },
+        "strict_current": {
+          "type": "object",
+          "required": [
+            "mode",
+            "optimizer_version",
+            "policy",
+            "execution_allowed",
+            "zones",
+            "history_effect"
+          ],
+          "properties": {
+            "mode": {
+              "const": "SIMULASI"
+            },
+            "optimizer_version": {
+              "const": "balance-lp/1.1-candidate"
+            },
+            "execution_allowed": {
+              "const": false
+            },
+            "zones": {
+              "type": "array",
+              "minItems": 1
+            },
+            "history_effect": {
+              "enum": [
+                "DISABLED_BY_POLICY",
+                "EFFECTIVE",
+                "NO_HISTORY_SIGNAL",
+                "NO_HISTORY_HEADROOM"
+              ]
+            }
+          }
+        },
+        "history_bounded": {
+          "type": "object",
+          "required": [
+            "mode",
+            "optimizer_version",
+            "policy",
+            "execution_allowed",
+            "zones",
+            "history_effect"
+          ],
+          "properties": {
+            "mode": {
+              "const": "SIMULASI"
+            },
+            "optimizer_version": {
+              "const": "balance-lp/1.1-candidate"
+            },
+            "execution_allowed": {
+              "const": false
+            },
+            "zones": {
+              "type": "array",
+              "minItems": 1
+            },
+            "history_effect": {
+              "enum": [
+                "DISABLED_BY_POLICY",
+                "EFFECTIVE",
+                "NO_HISTORY_SIGNAL",
+                "NO_HISTORY_HEADROOM"
+              ]
+            }
+          }
+        },
+        "fairness_envelope": {
+          "type": "object",
+          "required": [
+            "bounds_satisfied",
+            "allowed_extra_disparity_ratio"
+          ],
+          "properties": {
+            "bounds_satisfied": {
+              "const": true
+            },
+            "allowed_extra_disparity_ratio": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 0.1
+            }
+          }
+        },
+        "same_inputs_for_both_policies": {
+          "const": true
+        },
+        "old_deficit_added_to_current_need": {
+          "const": false
+        },
+        "execution_allowed": {
+          "const": false
+        },
+        "actual_measured": {
+          "type": "null"
+        }
+      }
+    },
+    "current_cycle_rollouts": {
+      "type": "object"
+    },
+    "history_after_cycle3": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "balance-history-snapshot/0.1"
+        },
+        "context": {
+          "const": "SIMULASI"
+        },
+        "as_of": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "window_cycles": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "cycle_ids_used": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "record_sha256_used": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        },
+        "rows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "zone_id": {
+                "type": "string"
+              },
+              "history_state": {
+                "enum": [
+                  "KNOWN",
+                  "UNKNOWN",
+                  "NO_POSITIVE_NEED"
+                ]
+              },
+              "completed_cycles_used": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "history_need_ml": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "history_deficit_ml": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "history_score": {
+                "anyOf": [
+                  {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "kind": {
+                "const": "CALCULATED"
+              },
+              "context": {
+                "const": "SIMULASI"
+              }
+            },
+            "required": [
+              "zone_id",
+              "history_state",
+              "completed_cycles_used",
+              "history_need_ml",
+              "history_deficit_ml",
+              "history_score",
+              "kind",
+              "context"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "actual_measured": {
+          "type": "null"
+        },
+        "snapshot_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "schema_version",
+        "context",
+        "as_of",
+        "window_cycles",
+        "cycle_ids_used",
+        "record_sha256_used",
+        "rows",
+        "actual_measured",
+        "snapshot_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "history_state": {
+      "type": "object",
+      "properties": {
+        "schema_version": {
+          "const": "balance-history-state/0.1"
+        },
+        "context": {
+          "const": "SIMULASI"
+        },
+        "zone_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "window_cycles": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "entries": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "properties": {
+              "record": {
+                "type": "object",
+                "properties": {
+                  "cycle_id": {
+                    "type": "string"
+                  },
+                  "cycle_index": {
+                    "type": "integer",
+                    "minimum": 1
+                  },
+                  "cycle_start": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "cycle_end": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "context": {
+                    "const": "SIMULASI"
+                  },
+                  "source_ref": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "complete": {
+                    "const": true
+                  },
+                  "quality": {
+                    "const": "VALID"
+                  },
+                  "source_budget_ml": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "source_remaining_ml": {
+                    "type": "number",
+                    "minimum": 0
+                  },
+                  "in_transit_release_ml": {
+                    "const": 0
+                  },
+                  "rows": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "zone_id": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "frozen_need_ml": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "source_released_ml": {
+                          "type": "number",
+                          "minimum": 0
+                        },
+                        "simulated_received_ml": {
+                          "type": "number",
+                          "minimum": 0
+                        }
+                      },
+                      "required": [
+                        "zone_id",
+                        "frozen_need_ml",
+                        "source_released_ml",
+                        "simulated_received_ml"
+                      ],
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                "required": [
+                  "cycle_id",
+                  "cycle_index",
+                  "cycle_start",
+                  "cycle_end",
+                  "context",
+                  "source_ref",
+                  "complete",
+                  "quality",
+                  "source_budget_ml",
+                  "source_remaining_ml",
+                  "in_transit_release_ml",
+                  "rows"
+                ],
+                "additionalProperties": false,
+                "$schema": "https://json-schema.org/draft/2020-12/schema"
+              },
+              "record_sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "calculated_gaps": {
+                "type": "array"
+              }
+            },
+            "required": [
+              "record",
+              "record_sha256",
+              "calculated_gaps"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "real_measurement_rows": {
+          "const": 0
+        },
+        "execution_allowed": {
+          "const": false
+        },
+        "actual_measured": {
+          "type": "null"
+        },
+        "state_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "schema_version",
+        "context",
+        "zone_ids",
+        "window_cycles",
+        "entries",
+        "real_measurement_rows",
+        "execution_allowed",
+        "actual_measured",
+        "state_sha256"
+      ],
+      "additionalProperties": false
+    },
+    "checks": {
+      "type": "object",
+      "properties": {
+        "fairness_bounds_satisfied": {
+          "const": true
+        },
+        "source_balances_satisfied": {
+          "const": true
+        },
+        "only_chosen_branch_finalized": {
+          "const": true
+        },
+        "future_cycle_excluded_from_decision_snapshot": {
+          "const": true
+        },
+        "export_reload_verified": {
+          "const": true
+        }
+      },
+      "required": [
+        "fairness_bounds_satisfied",
+        "source_balances_satisfied",
+        "only_chosen_branch_finalized",
+        "future_cycle_excluded_from_decision_snapshot",
+        "export_reload_verified"
+      ],
+      "additionalProperties": false
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "uniform_history_control": {
+      "type": "object",
+      "required": [
+        "context",
+        "kind",
+        "actual_measured"
+      ],
+      "properties": {
+        "context": {
+          "const": "SIMULASI"
+        },
+        "actual_measured": {
+          "type": "null"
+        }
+      }
+    },
+    "score_sensitivity_control": {
+      "type": "object",
+      "required": [
+        "context",
+        "kind",
+        "actual_measured",
+        "status",
+        "check_passed"
+      ],
+      "properties": {
+        "context": {
+          "const": "SIMULASI"
+        },
+        "actual_measured": {
+          "type": "null"
+        },
+        "check_passed": {
+          "const": true
+        }
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "module_version",
+    "status",
+    "context",
+    "ml_status",
+    "history_component_kind",
+    "real_measurement_rows",
+    "execution_allowed",
+    "device_connected",
+    "actual_measured",
+    "field_validated",
+    "proposal_targets_proven",
+    "upstream",
+    "experiment",
+    "initial_unknown_history",
+    "seed_cycles",
+    "history_before_cycle3",
+    "policy_comparison",
+    "current_cycle_rollouts",
+    "history_after_cycle3",
+    "history_state",
+    "checks",
+    "limitations",
+    "uniform_history_control",
+    "score_sensitivity_control"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

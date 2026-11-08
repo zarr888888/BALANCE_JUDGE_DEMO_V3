@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Stateless synthetic scheduler replay options",
+  "type": "object", "additionalProperties": false,
+  "properties": {
+    "received_factor": {"type": "number", "minimum": 0, "maximum": 1},
+    "supply_fraction": {"type": "number", "minimum": 0, "maximum": 1},
+    "horizon_s": {"type": "number", "exclusiveMinimum": 0, "maximum": 3600}
+  }
+}

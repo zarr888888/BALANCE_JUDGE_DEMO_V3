@@ -1,0 +1,472 @@
+{
+  "schema_version": "balance-handoff/1.0",
+  "plan_id": "p_4d27ab0721174428992f1e6453b2fab0",
+  "request_id": "author-smoke-001",
+  "created_at": "2026-11-06T07:52:38.073832+00:00",
+  "context": "SIMULASI",
+  "status": "RECOMMENDATION_FOR_REVIEW",
+  "execution_allowed": false,
+  "field_validated": false,
+  "real_measurement_rows_in_training": 0,
+  "ml_status": "TRAINED_SYNTHETIC_ONLY",
+  "actual_measured": null,
+  "feature_source": "FIRST_SAVED_SYNTHETIC_TEST_CYCLE",
+  "predictions": [
+    {
+      "task": "demand",
+      "zone_id": "A",
+      "selected_ml_method": "gradient_boosting",
+      "method_used": "gradient_boosting",
+      "raw_ml_prediction_L": 222733.45528209722,
+      "ml_prediction_L": 222733.45528209722,
+      "baseline_method": "agronomic_forecast",
+      "baseline_prediction_L": 251767.59313117608,
+      "value_used_L": 222733.45528209722,
+      "ml_features_outside_training_range": [],
+      "preferred_method_on_validation": "agronomic_forecast",
+      "provenance": {
+        "context": "SIMULASI",
+        "kind": "PREDICTION",
+        "source_ref": "ml/demand",
+        "as_of": "2021-09-16T00:00:00+07:00",
+        "quality": "UNVERIFIED"
+      }
+    },
+    {
+      "task": "demand",
+      "zone_id": "B",
+      "selected_ml_method": "gradient_boosting",
+      "method_used": "gradient_boosting",
+      "raw_ml_prediction_L": 50265.15076824867,
+      "ml_prediction_L": 50265.15076824867,
+      "baseline_method": "agronomic_forecast",
+      "baseline_prediction_L": 59077.71174185589,
+      "value_used_L": 50265.15076824867,
+      "ml_features_outside_training_range": [],
+      "preferred_method_on_validation": "agronomic_forecast",
+      "provenance": {
+        "context": "SIMULASI",
+        "kind": "PREDICTION",
+        "source_ref": "ml/demand",
+        "as_of": "2021-09-16T00:00:00+07:00",
+        "quality": "UNVERIFIED"
+      }
+    },
+    {
+      "task": "demand",
+      "zone_id": "C",
+      "selected_ml_method": "gradient_boosting",
+      "method_used": "gradient_boosting",
+      "raw_ml_prediction_L": 27117.745809158987,
+      "ml_prediction_L": 27117.745809158987,
+      "baseline_method": "agronomic_forecast",
+      "baseline_prediction_L": 13627.518522499933,
+      "value_used_L": 27117.745809158987,
+      "ml_features_outside_training_range": [
+        "percolation_assumed_L"
+      ],
+      "preferred_method_on_validation": "agronomic_forecast",
+      "provenance": {
+        "context": "SIMULASI",
+        "kind": "PREDICTION",
+        "source_ref": "ml/demand",
+        "as_of": "2021-09-16T00:00:00+07:00",
+        "quality": "UNVERIFIED"
+      }
+    },
+    {
+      "task": "supply",
+      "zone_id": null,
+      "selected_ml_method": "ridge",
+      "method_used": "ridge",
+      "raw_ml_prediction_L": 90828.41164780648,
+      "ml_prediction_L": 90828.41164780648,
+      "baseline_method": "persistence",
+      "baseline_prediction_L": 83396.37276749316,
+      "value_used_L": 90828.41164780648,
+      "ml_features_outside_training_range": [],
+      "preferred_method_on_validation": "toy_inflow_formula",
+      "provenance": {
+        "context": "SIMULASI",
+        "kind": "PREDICTION",
+        "source_ref": "ml/supply",
+        "as_of": "2021-09-16T00:00:00+07:00",
+        "quality": "UNVERIFIED"
+      }
+    }
+  ],
+  "source_budget": {
+    "inflow_prediction_L": 90828.41164780648,
+    "usable_storage_assumed_L": 0,
+    "reserve_assumed_L": 0,
+    "other_outflows_assumed_L": 0,
+    "scenario_supply_fraction": 1.0,
+    "available_demo_ml": 908.2841164780649,
+    "kind": "CALCULATED",
+    "context": "SIMULASI"
+  },
+  "eta": {
+    "mode": "learned",
+    "inference_used": true,
+    "frozen_before_solve": true,
+    "snapshot_ref": "sim-loss-6abb2fff885d1db85772",
+    "as_of": "2021-09-16T00:00:00+07:00",
+    "feature_input_kind": "ASSUMPTION",
+    "model": {
+      "model_run": "loss",
+      "model_version": "balance-loss/0.1-synthetic",
+      "selected_ml": "gradient_boosting",
+      "model_sha256": "2e74c0c62171fa5add3166aafc0a47042a1f042e9202efa81aa3ec6e045ce545",
+      "dataset_sha256": "a7a6bbed13e4af2b37157c7c35ff7115dab1ce6113d69f8fdc0ef2052b61d711",
+      "training_context": "SIMULASI",
+      "field_validated": false,
+      "real_measurement_rows": 0
+    },
+    "settings": {
+      "nominal_flow_ml_s": 6.0,
+      "upstream_head_cm": 20.0
+    },
+    "zones": [
+      {
+        "zone_id": "A",
+        "delivery_efficiency": 0.9756547728557288,
+        "eta_raw_prediction": 0.9756547728557288,
+        "clipping_applied": false,
+        "outside_training_range": [],
+        "actual_measured_eta": null,
+        "feature_snapshot": {
+          "zone_id": "A",
+          "features": {
+            "nominal_flow_ml_s": 6.0,
+            "upstream_head_cm": 20.0
+          },
+          "features_available_at": "2021-09-16T00:00:00+07:00",
+          "as_of": "2021-09-16T00:00:00+07:00"
+        },
+        "provenance": {
+          "context": "SIMULASI",
+          "kind": "PREDICTION",
+          "source_ref": "loss/balance-loss/0.1-synthetic",
+          "as_of": "2021-09-16T00:00:00+07:00",
+          "quality": "UNVERIFIED"
+        }
+      },
+      {
+        "zone_id": "B",
+        "delivery_efficiency": 0.8955584668277079,
+        "eta_raw_prediction": 0.8955584668277079,
+        "clipping_applied": false,
+        "outside_training_range": [],
+        "actual_measured_eta": null,
+        "feature_snapshot": {
+          "zone_id": "B",
+          "features": {
+            "nominal_flow_ml_s": 6.0,
+            "upstream_head_cm": 20.0
+          },
+          "features_available_at": "2021-09-16T00:00:00+07:00",
+          "as_of": "2021-09-16T00:00:00+07:00"
+        },
+        "provenance": {
+          "context": "SIMULASI",
+          "kind": "PREDICTION",
+          "source_ref": "loss/balance-loss/0.1-synthetic",
+          "as_of": "2021-09-16T00:00:00+07:00",
+          "quality": "UNVERIFIED"
+        }
+      },
+      {
+        "zone_id": "C",
+        "delivery_efficiency": 0.8000809075353575,
+        "eta_raw_prediction": 0.8000809075353575,
+        "clipping_applied": false,
+        "outside_training_range": [],
+        "actual_measured_eta": null,
+        "feature_snapshot": {
+          "zone_id": "C",
+          "features": {
+            "nominal_flow_ml_s": 6.0,
+            "upstream_head_cm": 20.0
+          },
+          "features_available_at": "2021-09-16T00:00:00+07:00",
+          "as_of": "2021-09-16T00:00:00+07:00"
+        },
+        "provenance": {
+          "context": "SIMULASI",
+          "kind": "PREDICTION",
+          "source_ref": "loss/balance-loss/0.1-synthetic",
+          "as_of": "2021-09-16T00:00:00+07:00",
+          "quality": "UNVERIFIED"
+        }
+      }
+    ],
+    "context": "SIMULASI",
+    "actual_measured_eta": null,
+    "prediction_interval": null
+  },
+  "allocation": {
+    "optimizer_version": "balance-lp/1.1-candidate",
+    "policy_status": "EXPERIMENTAL_FOR_REVIEW",
+    "policy": {
+      "history_mode": "STRICT_CURRENT",
+      "history_disparity_budget": 0.0,
+      "kappa_tail": 0.9,
+      "epsilon_volume": 1e-06,
+      "epsilon_ratio": 1e-07,
+      "solver_time_budget_s": 15.0
+    },
+    "status": "NEEDS_APPROVAL",
+    "total_release_ml": 908.2841164780649,
+    "unused_ml": 0.0,
+    "disparity_ratio": 9.929744410053232e-08,
+    "min_fulfillment_ratio": 0.2853437526035403,
+    "mean_fulfillment_ratio": 0.2853437864519684,
+    "strict_tail_max_release_ml": 908.2841164780649,
+    "release_reduction_for_strict_tail_ml": 0.0,
+    "history_effect": "DISABLED_BY_POLICY",
+    "zones": [
+      {
+        "zone_id": "A",
+        "position": "hulu",
+        "need_ml": 2227.3345528209725,
+        "release_ml": 651.4150685839707,
+        "expected_delivered_ml": 635.5562207740928,
+        "credited_received_to_date_ml": 0.0,
+        "expected_cycle_received_ml": 635.5562207740928,
+        "fulfillment_ratio": 0.2853438519009844,
+        "actual_fulfillment_ratio": null,
+        "expected_deficit_ml": 1591.7783320468798,
+        "history_score": 0.0,
+        "history_delta_ratio": -1.2387990633300205e-10,
+        "tail_guard": null,
+        "reason_codes": [
+          "SIMULATION_INPUTS",
+          "LOSS_COMPENSATION",
+          "HISTORY_UNKNOWN"
+        ],
+        "explanation_id": "Zona A: kebutuhan 2227.33 mL; release 651.42 mL; perkiraan diterima 635.56 mL. Pemenuhan 28.53%. Eta 0.97565 berasal dari model loss simulasi. Histori belum tersedia. LP mempertahankan pemanfaatan sumber dan menekan disparitas; pengaman hilir menjadi constraint ketat karena feasible."
+      },
+      {
+        "zone_id": "B",
+        "position": "tengah",
+        "need_ml": 502.65150768248674,
+        "release_ml": 160.1553363255082,
+        "expected_delivered_ml": 143.42846745394803,
+        "credited_received_to_date_ml": 0.0,
+        "expected_cycle_received_ml": 143.42846745394803,
+        "fulfillment_ratio": 0.2853437526035403,
+        "actual_fulfillment_ratio": null,
+        "expected_deficit_ml": 359.2230402285387,
+        "history_score": 0.0,
+        "history_delta_ratio": 5.786761070325497e-10,
+        "tail_guard": null,
+        "reason_codes": [
+          "SIMULATION_INPUTS",
+          "LOSS_COMPENSATION",
+          "HISTORY_UNKNOWN"
+        ],
+        "explanation_id": "Zona B: kebutuhan 502.65 mL; release 160.16 mL; perkiraan diterima 143.43 mL. Pemenuhan 28.53%. Eta 0.89556 berasal dari model loss simulasi. Histori belum tersedia. LP mempertahankan pemanfaatan sumber dan menekan disparitas; pengaman hilir menjadi constraint ketat karena feasible."
+      },
+      {
+        "zone_id": "C",
+        "position": "hilir",
+        "need_ml": 271.1774580915899,
+        "release_ml": 96.71371156858606,
+        "expected_delivered_ml": 77.37879412290715,
+        "credited_received_to_date_ml": 0.0,
+        "expected_cycle_received_ml": 77.37879412290715,
+        "fulfillment_ratio": 0.2853437548513805,
+        "actual_fulfillment_ratio": null,
+        "expected_deficit_ml": 193.79866396868277,
+        "history_score": 0.0,
+        "history_delta_ratio": 2.826516354303976e-09,
+        "tail_guard": {
+          "status": "SATISFIED",
+          "required_ratio": 0.2568094078067716,
+          "gap_ratio": 0.0,
+          "tail_to_mean": 0.9999998892543333
+        },
+        "reason_codes": [
+          "SIMULATION_INPUTS",
+          "LOSS_COMPENSATION",
+          "HISTORY_UNKNOWN",
+          "TAIL_TARGET_SATISFIED"
+        ],
+        "explanation_id": "Zona C: kebutuhan 271.18 mL; release 96.71 mL; perkiraan diterima 77.38 mL. Pemenuhan 28.53%. Eta 0.80008 berasal dari model loss simulasi. Histori belum tersedia. LP mempertahankan pemanfaatan sumber dan menekan disparitas; pengaman hilir menjadi constraint ketat karena feasible."
+      }
+    ],
+    "stage_objectives": {
+      "max_release_ml": 908.2841164780649,
+      "min_current_disparity_ratio": 0.0,
+      "current_floor_ratio": 0.2853438240583207,
+      "history_score_reference": 0.0,
+      "history_score_final": 0.0,
+      "reference_tail_slack_sum": 0.0
+    },
+    "max_primal_violation": 2.875570976809943e-18,
+    "solver_trace": [
+      {
+        "stage": "1_max_release",
+        "success": true,
+        "status": 0,
+        "objective": -908.2841164780649,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
+      },
+      {
+        "stage": "strict_tail_alternative",
+        "success": true,
+        "status": 0,
+        "objective": -908.2841164780649,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
+      },
+      {
+        "stage": "2_hard_tail_feasibility_at_max_release",
+        "success": true,
+        "status": 0,
+        "objective": 0.0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
+      },
+      {
+        "stage": "3_min_disparity",
+        "success": true,
+        "status": 0,
+        "objective": 0.0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
+      },
+      {
+        "stage": "4_max_current_floor",
+        "success": true,
+        "status": 0,
+        "objective": -0.2853438240583207,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
+      },
+      {
+        "stage": "5_min_soft_tail_gap_after_fairness",
+        "success": true,
+        "status": 0,
+        "objective": 0.0,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
+      },
+      {
+        "stage": "tie_A",
+        "success": true,
+        "status": 0,
+        "objective": -651.4150695839706,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
+      },
+      {
+        "stage": "tie_B",
+        "success": true,
+        "status": 0,
+        "objective": -160.15533732550819,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
+      },
+      {
+        "stage": "tie_C",
+        "success": true,
+        "status": 0,
+        "objective": -96.71371156858606,
+        "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)"
+      }
+    ],
+    "runtime_s": 0.01577334500007055,
+    "tail_feasibility_mode": "HARD_GUARD_AT_MAX_RELEASE",
+    "objective_order": "MAX_RELEASE;FEASIBLE_HARD_TAIL;MIN_DISPARITY;MAX_FLOOR;MIN_SOFT_GAP;BOUNDED_HISTORY"
+  },
+  "schedule": {
+    "status": "READY_FOR_SIMULATION",
+    "slots": [
+      {
+        "order": 1,
+        "zone_id": "C",
+        "start_s": 1.0,
+        "release_end_s": 17.118951928097676,
+        "verification_end_s": 23.118951928097676,
+        "release_ml": 96.71371156858606,
+        "expected_received_ml": 77.37879412290715,
+        "release_flow_assumed_ml_s": 6.0,
+        "travel_delay_assumed_s": 6.0
+      },
+      {
+        "order": 2,
+        "zone_id": "A",
+        "start_s": 24.118951928097676,
+        "release_end_s": 132.68813002542612,
+        "verification_end_s": 134.68813002542612,
+        "release_ml": 651.4150685839707,
+        "expected_received_ml": 635.5562207740928,
+        "release_flow_assumed_ml_s": 6.0,
+        "travel_delay_assumed_s": 2.0
+      },
+      {
+        "order": 3,
+        "zone_id": "B",
+        "start_s": 135.68813002542612,
+        "release_end_s": 162.38068607967747,
+        "verification_end_s": 166.38068607967747,
+        "release_ml": 160.1553363255082,
+        "expected_received_ml": 143.42846745394803,
+        "release_flow_assumed_ml_s": 6.0,
+        "travel_delay_assumed_s": 4.0
+      }
+    ],
+    "start_s": 0.0,
+    "end_s": 166.38068607967747,
+    "horizon_end_s": 600.0,
+    "order_policy": "EARLIEST_DEADLINE_HISTORY_TAIL_ZONE_ID",
+    "one_slot_at_a_time": true,
+    "wait_for_complete_collection": true,
+    "timing_kind": "ASSUMPTION",
+    "execution_allowed": false
+  },
+  "comparison_baseline": {
+    "method": "CAPACITY_AWARE_PROPORTIONAL_RELEASE",
+    "zones": [
+      {
+        "zone_id": "A",
+        "release_ml": 674.0894269423632,
+        "expected_delivered_ml": 657.6785667278997,
+        "fulfillment_ratio": 0.2952760580555508
+      },
+      {
+        "zone_id": "B",
+        "release_ml": 152.12446030447623,
+        "expected_delivered_ml": 136.23634843726924,
+        "fulfillment_ratio": 0.2710353920261721
+      },
+      {
+        "zone_id": "C",
+        "release_ml": 82.0702292312256,
+        "expected_delivered_ml": 65.6628234849538,
+        "fulfillment_ratio": 0.2421396820630137
+      }
+    ],
+    "total_release_ml": 908.284116478065,
+    "disparity_ratio": 0.053136375992537094
+  },
+  "warnings": [
+    "SIMULATION_ONLY",
+    "DEMAND_ACCURACY_TARGET_NOT_PROVEN",
+    "LOSS_LEARNED_SYNTHETIC_ONLY",
+    "LOSS_FEATURES_ASSUMED_NOT_MEASURED",
+    "CROSS_GENERATOR_COMPOSITION_UNVALIDATED",
+    "VOLUME_SCALE_NOT_HYDRAULIC_SIMILARITY",
+    "HISTORY_UNKNOWN",
+    "NO_CALIBRATED_PREDICTION_INTERVAL",
+    "ML_FEATURE_OUTSIDE_TRAINING_RANGE"
+  ],
+  "scenario": {
+    "cycle_id": "synthetic_family_016_day_000",
+    "as_of": "2021-09-16T00:00:00+07:00",
+    "target_end": "2021-09-17T00:00:00+07:00",
+    "horizon_hours": 24,
+    "calendar_is_synthetic": true,
+    "replay_partition": "test",
+    "source": "first test cycle from existing local synthetic training run"
+  },
+  "conversion": {
+    "formula": "demo_mL = field_L * 1000 * scale_factor",
+    "scale_factor": 1e-05,
+    "purpose": "ILLUSTRATIVE_VOLUME_MAPPING_ONLY"
+  }
+}

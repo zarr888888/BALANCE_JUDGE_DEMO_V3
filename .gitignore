@@ -1,0 +1,13 @@
+.venv/
+node_modules/
+dist/
+.state/
+config.local.json
+.env
+__pycache__/
+.pytest_cache/
+*.pyc
+
+firmware/**/config.h
+
+.env.*

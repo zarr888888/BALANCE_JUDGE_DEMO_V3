@@ -1,0 +1,18 @@
+{
+  "status": "JUDGE_HTTP_PASS",
+  "timestamp_utc": "2026-11-08T05:16:37.706110+00:00",
+  "elapsed_seconds": 0.252,
+  "peak_rss_mib": 187.69,
+  "profile_scope": "One process: startup, judge HTTP login, plan, replay, simulated telemetry, authorization rejection, logout. Development WSGI server; not Docker/Render load test.",
+  "model_refitted": false,
+  "field_validated": false,
+  "physical_actuation_tested": false,
+  "runtime": {
+    "Flask": "3.1.3",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "scikit-learn": "1.8.0",
+    "joblib": "1.5.3",
+    "waitress": "3.0.2"
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "type": "object",
+  "properties": {
+    "record_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.:-]{1,100}$"
+    },
+    "device_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.:-]{1,100}$"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "context": {
+      "enum": [
+        "SIMULASI",
+        "MINIATUR"
+      ]
+    },
+    "value_kind": {
+      "enum": [
+        "SIMULATED",
+        "MEASUREMENT"
+      ]
+    },
+    "quality": {
+      "enum": [
+        "UNCALIBRATED",
+        "VALID",
+        "INVALID"
+      ]
+    },
+    "calibration_ref": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160
+    },
+    "zone_id": {
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "SOURCE"
+      ]
+    },
+    "readings": {
+      "type": "object",
+      "properties": {
+        "flow_ml_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "head_cm": {
+          "type": "number",
+          "minimum": 0
+        },
+        "source_volume_ml": {
+          "type": "number",
+          "minimum": 0
+        },
+        "received_volume_ml": {
+          "type": "number",
+          "minimum": 0
+        },
+        "released_volume_ml": {
+          "type": "number",
+          "minimum": 0
+        },
+        "source_distance_cm": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [],
+      "additionalProperties": false,
+      "minProperties": 1
+    },
+    "counter_scope": {
+      "enum": [
+        "SINCE_BOOT",
+        "SINCE_RESET",
+        "UNKNOWN"
+      ]
+    },
+    "boot_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_.:-]{1,100}$"
+    }
+  },
+  "required": [
+    "record_id",
+    "device_id",
+    "observed_at",
+    "context",
+    "value_kind",
+    "quality",
+    "zone_id",
+    "readings",
+    "counter_scope",
+    "boot_id"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

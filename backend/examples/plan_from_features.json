@@ -1,0 +1,56 @@
+{
+  "request_id": "features-001",
+  "context": "SIMULASI",
+  "feature_scenario": {
+    "as_of": "2021-09-16T00:00:00+07:00",
+    "target_end": "2021-09-17T00:00:00+07:00",
+    "features_available_at": "2021-09-16T00:00:00+07:00",
+    "supply": {
+      "base_inflow_assumed_L": 83396.37276749316,
+      "planned_upstream_inflow_L": 5690.520670808322,
+      "previous_inflow_L": 83396.37276749316,
+      "rain_forecast_mm": 0.0
+    },
+    "zones": [
+      {
+        "zone_id": "A",
+        "features": {
+          "area_m2": 18781.990805141013,
+          "effective_rain_forecast_L": 0.0,
+          "effective_rain_forecast_mm": 0.0,
+          "et0_forecast_mm": 6.263175298505084,
+          "etc_forecast_L": 121225.24140759402,
+          "kc_assumed": 1.0305210487160523,
+          "percolation_assumed_L": 130542.35172358203,
+          "percolation_assumed_mm": 6.9504001507577104
+        }
+      },
+      {
+        "zone_id": "B",
+        "features": {
+          "area_m2": 4301.869138802213,
+          "effective_rain_forecast_L": 0.0,
+          "effective_rain_forecast_mm": 0.0,
+          "et0_forecast_mm": 6.263175298505084,
+          "etc_forecast_L": 27045.026424839492,
+          "kc_assumed": 1.0037733191146736,
+          "percolation_assumed_L": 32032.685317016396,
+          "percolation_assumed_mm": 7.4462249509373475
+        }
+      },
+      {
+        "zone_id": "C",
+        "features": {
+          "area_m2": 1280.302025179625,
+          "effective_rain_forecast_L": 0.0,
+          "effective_rain_forecast_mm": 0.0,
+          "et0_forecast_mm": 6.263175298505084,
+          "etc_forecast_L": 8057.233526031047,
+          "kc_assumed": 1.0047984384622883,
+          "percolation_assumed_L": 5570.284996468887,
+          "percolation_assumed_mm": 4.350758560807074
+        }
+      }
+    ]
+  }
+}

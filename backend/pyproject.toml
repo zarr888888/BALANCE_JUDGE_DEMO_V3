@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "balance-ai-handoff"
+version = "1.0.0"
+requires-python = ">=3.10"
+description = "BALANCE simulated ML/LP/scheduler integration and telemetry boundary"
+dependencies = ["Flask>=3.1,<4", "numpy>=1.26,<3", "scipy>=1.11,<2", "scikit-learn>=1.4,<2", "joblib>=1.3,<2", "jsonschema>=4.18,<5", "waitress>=3,<4"]
+
+[tool.setuptools.packages.find]
+include = ["balance_handoff*"]
+
+[tool.setuptools.package-data]
+"balance_handoff" = ["contracts/*.json"]
+"balance_handoff.vendor.balance_ml" = ["parameter_registry.json"]
+"balance_handoff.vendor.balance_loss" = ["parameter_registry.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

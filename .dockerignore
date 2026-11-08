@@ -1,0 +1,14 @@
+.git
+.venv
+**/node_modules
+**/.state
+**/config.local.json
+**/.env
+**/__pycache__
+**/.pytest_cache
+**/*.pyc
+reference_original_backend
+evidence
+firmware
+
+**/.env.*

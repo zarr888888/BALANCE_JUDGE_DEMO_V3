@@ -1,0 +1,460 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BALANCE prediction-loss-to-LP demo response, 0.3",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "context",
+    "ml_status",
+    "integration_scope",
+    "proposal_targets_proven",
+    "real_measurement_rows",
+    "execution_allowed",
+    "status",
+    "scenario",
+    "predictions",
+    "prediction_unit",
+    "conversion",
+    "source_budget",
+    "allocation_inputs",
+    "allocation",
+    "comparison_baseline",
+    "warnings",
+    "actual_measured",
+    "schedule",
+    "prediction_interval",
+    "device_connected",
+    "demo_version",
+    "loss_integration_status",
+    "loss_profile"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "balance-ai-demo/0.3"
+    },
+    "context": {
+      "const": "SIMULASI"
+    },
+    "ml_status": {
+      "const": "TRAINED_SYNTHETIC_ONLY"
+    },
+    "integration_scope": {
+      "const": "LOCAL_REPLAY_PREDICTION_LOSS_TO_LP"
+    },
+    "proposal_targets_proven": {
+      "const": false
+    },
+    "real_measurement_rows": {
+      "const": 0
+    },
+    "execution_allowed": {
+      "const": false
+    },
+    "status": {
+      "const": "SIMULATION_FOR_REVIEW"
+    },
+    "model_run": {
+      "type": "string"
+    },
+    "prediction_unit": {
+      "const": "L"
+    },
+    "actual_measured": {
+      "type": "null"
+    },
+    "schedule": {
+      "type": "null"
+    },
+    "prediction_interval": {
+      "type": "null"
+    },
+    "device_connected": {
+      "const": false
+    },
+    "scenario": {
+      "type": "object",
+      "required": [
+        "cycle_id",
+        "as_of",
+        "target_end",
+        "horizon_hours",
+        "calendar_is_synthetic",
+        "replay_partition"
+      ],
+      "properties": {
+        "cycle_id": {
+          "type": "string"
+        },
+        "as_of": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "target_end": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "horizon_hours": {
+          "const": 24
+        },
+        "calendar_is_synthetic": {
+          "const": true
+        },
+        "replay_partition": {
+          "const": "test"
+        }
+      }
+    },
+    "predictions": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "required": [
+          "task",
+          "zone_id",
+          "selected_ml_method",
+          "method_used",
+          "raw_ml_prediction_L",
+          "ml_prediction_L",
+          "baseline_method",
+          "baseline_prediction_L",
+          "value_used_L",
+          "ml_features_outside_training_range",
+          "provenance"
+        ],
+        "properties": {
+          "task": {
+            "enum": [
+              "demand",
+              "supply"
+            ]
+          },
+          "zone_id": {
+            "enum": [
+              "A",
+              "B",
+              "C",
+              null
+            ]
+          },
+          "selected_ml_method": {
+            "enum": [
+              "ridge",
+              "gradient_boosting"
+            ]
+          },
+          "method_used": {
+            "enum": [
+              "ridge",
+              "gradient_boosting",
+              "agronomic_forecast",
+              "persistence"
+            ]
+          },
+          "raw_ml_prediction_L": {
+            "type": "number"
+          },
+          "ml_prediction_L": {
+            "type": "number",
+            "minimum": 0
+          },
+          "baseline_method": {
+            "enum": [
+              "agronomic_forecast",
+              "persistence"
+            ]
+          },
+          "baseline_prediction_L": {
+            "type": "number",
+            "minimum": 0
+          },
+          "value_used_L": {
+            "type": "number",
+            "minimum": 0
+          },
+          "ml_features_outside_training_range": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "provenance": {
+            "type": "object",
+            "required": [
+              "context",
+              "kind",
+              "source_ref",
+              "as_of",
+              "quality"
+            ],
+            "properties": {
+              "context": {
+                "const": "SIMULASI"
+              },
+              "kind": {
+                "enum": [
+                  "PREDICTION",
+                  "CALCULATED"
+                ]
+              },
+              "source_ref": {
+                "type": "string"
+              },
+              "as_of": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "quality": {
+                "const": "UNVERIFIED"
+              }
+            }
+          }
+        }
+      }
+    },
+    "conversion": {
+      "type": "object",
+      "required": [
+        "formula",
+        "scale_factor",
+        "purpose"
+      ],
+      "properties": {
+        "scale_factor": {
+          "const": 1e-05
+        },
+        "purpose": {
+          "const": "ILLUSTRATIVE_VOLUME_MAPPING_ONLY"
+        }
+      }
+    },
+    "source_budget": {
+      "type": "object",
+      "required": [
+        "available_demo_ml",
+        "inflow_prediction_L",
+        "context",
+        "kind"
+      ],
+      "properties": {
+        "available_demo_ml": {
+          "type": "number",
+          "minimum": 0
+        },
+        "inflow_prediction_L": {
+          "type": "number",
+          "minimum": 0
+        },
+        "context": {
+          "const": "SIMULASI"
+        },
+        "kind": {
+          "const": "CALCULATED"
+        }
+      }
+    },
+    "allocation_inputs": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "allocation": {
+      "type": "object",
+      "required": [
+        "optimizer_version",
+        "status",
+        "zones",
+        "total_release_ml",
+        "disparity_ratio",
+        "policy_status"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NEEDS_APPROVAL",
+            "DEGRADED_TAIL",
+            "NO_SUPPLY",
+            "NO_CAPACITY",
+            "NO_DEMAND",
+            "INFEASIBLE"
+          ]
+        },
+        "policy_status": {
+          "const": "EXPERIMENTAL_FOR_REVIEW"
+        },
+        "zones": {
+          "type": "array",
+          "maxItems": 3
+        },
+        "total_release_ml": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "disparity_ratio": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "comparison_baseline": {
+      "type": "object",
+      "required": [
+        "method",
+        "zones",
+        "total_release_ml",
+        "disparity_ratio"
+      ],
+      "properties": {
+        "method": {
+          "const": "CAPACITY_AWARE_PROPORTIONAL_RELEASE"
+        },
+        "zones": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "demo_version": {
+      "const": "1.2"
+    },
+    "loss_integration_status": {
+      "const": "CONNECTED_SIMULATION_ONLY"
+    },
+    "loss_profile": {
+      "type": "object",
+      "required": [
+        "mode",
+        "inference_used",
+        "frozen_before_solve",
+        "snapshot_ref",
+        "as_of",
+        "settings",
+        "zones",
+        "context",
+        "actual_measured_eta",
+        "prediction_interval"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "learned",
+            "assumed"
+          ]
+        },
+        "inference_used": {
+          "type": "boolean"
+        },
+        "frozen_before_solve": {
+          "const": true
+        },
+        "snapshot_ref": {
+          "type": "string"
+        },
+        "as_of": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "context": {
+          "const": "SIMULASI"
+        },
+        "actual_measured_eta": {
+          "type": "null"
+        },
+        "prediction_interval": {
+          "type": "null"
+        },
+        "zones": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "required": [
+              "zone_id",
+              "delivery_efficiency",
+              "eta_raw_prediction",
+              "clipping_applied",
+              "outside_training_range",
+              "actual_measured_eta",
+              "provenance"
+            ],
+            "properties": {
+              "zone_id": {
+                "enum": [
+                  "A",
+                  "B",
+                  "C"
+                ]
+              },
+              "delivery_efficiency": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 1
+              },
+              "eta_raw_prediction": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "clipping_applied": {
+                "type": "boolean"
+              },
+              "outside_training_range": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "actual_measured_eta": {
+                "type": "null"
+              },
+              "provenance": {
+                "type": "object",
+                "required": [
+                  "context",
+                  "kind",
+                  "source_ref",
+                  "as_of",
+                  "quality"
+                ],
+                "properties": {
+                  "context": {
+                    "const": "SIMULASI"
+                  },
+                  "kind": {
+                    "enum": [
+                      "PREDICTION",
+                      "ASSUMPTION"
+                    ]
+                  },
+                  "quality": {
+                    "const": "UNVERIFIED"
+                  },
+                  "as_of": {
+                    "type": "string",
+                    "format": "date-time"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

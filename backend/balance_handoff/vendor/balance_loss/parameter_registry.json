@@ -1,0 +1,35 @@
+{
+  "version": "balance-loss-generator/0.1",
+  "context": "SIMULASI",
+  "review_status": "INTERNAL_EXPERIMENT_NOT_CALIBRATED",
+  "seed": 20261101,
+  "sessions": 25,
+  "runs_per_session": 6,
+  "branches_per_run": 3,
+  "split": {"train_sessions": 15, "validation_sessions": 5, "test_sessions": 5},
+  "calendar": "arbitrary synthetic origin 2020-01-01+07:00; sessions 2 days apart; runs 1h apart",
+  "eta_formula": "zone_base - 0.0015*(actual_flow_ml_s-6)^2 + 0.0004*(head_cm-20) + session_bias + bounded_noise",
+  "zone_base": {"A": 0.98, "B": 0.90, "C": 0.80},
+  "nominal_flow_ml_s_range": [2, 12],
+  "actual_flow_error_uniform_ml_s": [-0.2, 0.2],
+  "head_cm_range": [10, 30],
+  "release_volume_ml_range": [50, 500],
+  "session_bias_uniform_ratio": [-0.004, 0.004],
+  "noise_uniform_ratio": [-0.004, 0.004],
+  "alignment_delay_assumption_s": {"A": 2, "B": 4, "C": 6},
+  "collection_end_margin_s": 2,
+  "min_release_ml_lab_threshold": 1,
+  "parameter_source": "ALL_NUMERIC_VALUES_ARE_INTERNAL_TOY_ASSUMPTIONS_NOT_MEASURED_OR_FAO_RECOMMENDATIONS",
+  "method_references": [
+    "https://www.fao.org/4/W3094E/w3094e04.htm",
+    "https://www.fao.org/4/t7202e/t7202e08.htm",
+    "https://scikit-learn.org/stable/common_pitfalls.html"
+  ],
+  "notes": [
+    "Ratio received/release is calculated from paired points/windows, not crop water-use efficiency.",
+    "The full reception packet is collected and transit reconciled by generator assumption.",
+    "Delay is NOT learned from volume pairs.",
+    "No field, miniature, sensor, partner or weather data are used.",
+    "Numeric parameters and lab resolution threshold require review before real-data use."
+  ]
+}
