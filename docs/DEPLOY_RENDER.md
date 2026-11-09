@@ -34,9 +34,9 @@ Periksa konfigurasi berikut pada ringkasan sebelum membuat layanan:
 | BALANCE_COOKIE_SECURE | true |
 | ENABLE_ACTUATION | false |
 | JUDGE_USERNAME | juri |
-| JUDGE_PASSWORD | Diisi tim, minimal 12 karakter |
+| JUDGE_PASSWORD | BALANCE-Demo2026! (diisi manual) |
 
-DASHBOARD_KEY dan DEVICE_KEY dibuat otomatis oleh Render. Keduanya merupakan akses tim, bukan akun juri. Isi JUDGE_PASSWORD langsung pada formulir/environment Render; jangan menaruhnya di render.yaml atau source. Password akun juri perlu diberikan pada formulir pengumpulan lomba melalui saluran yang ditentukan panitia. Password hosting, GitHub, dan akses operator tetap milik tim.
+DASHBOARD_KEY dan DEVICE_KEY dibuat otomatis oleh Render. Keduanya merupakan akses tim, bukan akun juri; jangan menampilkan nilainya di dokumentasi atau frontend. Isi JUDGE_PASSWORD secara manual pada environment Render sesuai tabel; render.yaml tetap menggunakan sync: false. Akun demo juri sengaja ditampilkan kepada pengunjung pada halaman login untuk SIMULASI. Password pribadi, akun hosting, GitHub, dan akses operator tetap privat milik tim.
 
 ## 3. Tunggu build dan deploy
 
@@ -64,7 +64,7 @@ Script meminta username dan password secara interaktif; password tidak ditampilk
 
 ## 5. Siapkan akses juri
 
-Isi template docs/AKSES_JURI.md dengan URL Live dan petunjuk. Tuliskan password hanya pada berkas pengumpulan privat atau formulir panitia, bukan repository. Uji dari HP dengan jaringan berbeda dan mode browser privat agar akses tidak bergantung pada sesi operator atau Wi-Fi laptop.
+Isi template docs/AKSES_JURI.md dengan URL Live setelah Render aktif; sebelum itu pertahankan placeholder URL. Akun demo tersedia langsung pada halaman login, sehingga juri tidak perlu mencari password di berkas pengumpulan. Uji dari HP dengan jaringan berbeda dan mode browser privat agar akses tidak bergantung pada sesi operator atau Wi-Fi laptop.
 
 ## Batas verifikasi
 

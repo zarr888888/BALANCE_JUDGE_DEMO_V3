@@ -25,7 +25,7 @@ cd "C:\Users\Fajar\Downloads\BALANCE_JUDGE_DEMO_V3"
 
 Perintah persiapan menyalin artefak model V2 yang sudah ada, memverifikasinya, dan membuat konfigurasi akun untuk folder demo baru. Database, kunci, serta folder asal tidak ditimpa. Jika folder baru sudah disiapkan, gunakan perintah yang sama; model yang sudah lengkap diverifikasi kembali.
 
-Buka http://127.0.0.1:5000. Username/password lokal muncul dari show_access.py judge. Password tersebut bukan password hosting. Simpan untuk tim; jangan unggah config.local.json.
+Buka http://127.0.0.1:5000. Akun demo publik tersedia pada halaman login: username `juri`, password `BALANCE-Demo2026!`. Konfigurasi lokal paket ini diselaraskan dengan panel; pada Render isi akun yang sama secara manual mengikuti docs/DEPLOY_RENDER.md. Jangan unggah config.local.json karena juga memuat rahasia operator/perangkat.
 
 ## Alur uji singkat
 
@@ -44,4 +44,4 @@ Ikuti docs/DEPLOY_RENDER.md. Target awal yang disarankan: Render 0.5c-512mb (dul
 
 Pedoman Tahap 2 mewajibkan video 2–5 menit dan tautan desain Figma atau PDF. Aplikasi yang berjalan disertakan sebagai tambahan dengan akun uji/petunjuk singkat. Baca docs/SUBMIT_TAHAP_2.md dan docs/NASKAH_VIDEO.md.
 
-Paket ini belum menghasilkan URL hosting publik. Akun Render, repository tim, password juri produksi, dan pembayaran diselesaikan di akun tim. Tidak ada commit, push, pembelian, atau deployment publik yang dilakukan oleh penyusun paket.
+Paket ini belum menghasilkan URL hosting publik. Akun Render, repository tim, pengisian manual password demo pada Render, dan pembayaran diselesaikan di akun tim. Tidak ada commit, push, pembelian, atau deployment publik yang dilakukan oleh penyusun paket.
